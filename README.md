@@ -1,4 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TODO App
+
+Short itroduction
+
+## Roadmap 
+
+ * [ ] Split representation and data (state and components) 
+ * [ ] Local storage persistancy
+ * [ ] Progressive web app
+
 
 ## Available Scripts
 
