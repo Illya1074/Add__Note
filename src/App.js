@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import {clickAll, clickActive, clickCompleted, clickClear, clickHandler} from './clicks.js';
+import {clickActive, clickAll, clickClear, clickCompleted, clickHandler} from './clicks.js';
+import {Header} from "./components/Header";
 
 
 // import './fontawesome.js';
@@ -35,12 +36,10 @@ function App() {
     const updateArray = (category, state) => {
         const arr = [];
         for (let key in state[category]) {
-
             arr.push({
                 value: state[category][key].value,
                 id: key
             });
-
         }
 
         setListItems(arr.map((item, i) =>
@@ -48,8 +47,7 @@ function App() {
                 <label className="container">
                     <input className="toggle" type="checkbox" checked={!state[category][item.id].active}
                            onChange={() => checkFluency(item.id, category, state, item.value)}/>
-                    <span className="checkmark"></span>
-
+                    <span className="checkmark"/>
                 </label>
                 <label className={state[category][item.id].active ? "items" : "items_active"}> {item.value} </label>
                 <span className="times" onClick={() => deleteItem(state, item.id)}> ×</span>
@@ -179,11 +177,7 @@ function App() {
 
     return (
         <div className="App">
-
-            <header>
-                <h1 className="title">{/*<FontAwesomeIcon icon={faCheck} />*/} AddNote</h1>
-            </header>
-
+            <Header/>
             <div className="shadow">
                 <main className="main">
                     <div className="myflexInput">
@@ -194,9 +188,7 @@ function App() {
                     </div>
                     <div>{listItems}</div>
                 </main>
-
                 {ItemsLeftPure(state) ?
-
                     <footer className="myFooter">
                         <div className="Row">
                             <button className={activeButton.All} onClick={() => click(state, 'All', activeButton)}>All
@@ -210,15 +202,8 @@ function App() {
                             <button className="clear" onClick={() => click(state, 'Clear', activeButton)}>Clear</button>
                             <span className='items_left-mobile'>items left <ItemsLeft props={state}></ItemsLeft></span>
                         </div>
-
-                        {/*<div className="footerEndBig" />
-              <div className="footerEndLittle"/>
-            */}
                     </footer> : ''}
-
             </div>
-
-
         </div>
     );
 
